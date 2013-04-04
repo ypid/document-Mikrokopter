@@ -1,5 +1,6 @@
 *.html
 test.*
+*-autopp.ctr
 *.odt
 files/images
 files/git

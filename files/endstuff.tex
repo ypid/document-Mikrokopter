@@ -55,15 +55,13 @@ Status:~\progressbar{.\FortschritteigenesErmessen} (eigenes Ermessen)
 	  \Isourcefile{Endteil}{files/endstuff.tex}
     \end{sourcefiletable}
   \begin{landscape}
-    \pagestyle{plain}
-    \pdfbookmark[2]{Versionshinweise}{versionshinweise}
-    \subsection*{Versionshinweise}
-      \input{files/git/versions-log.tex}
-      \printgitstatlandscape{1}
+	\pagestyle{empty}
+	\printVersionNotes
+	\input{files/git/old/versions-log}
   \end{landscape}
-  \printgitstat{1}
-  \subsubsection*{Dateien?}
-  \pdfbookmark[3]{Dateien?}{files_by_date}
-  \includegraphics[width=14cm]{files/git/stats/files_by_date-crop}
+%  \printgitstat{1}
+%  \subsubsection*{Dateien?}
+%  \pdfbookmark[3]{Dateien?}{files_by_date}
+%  \includegraphics[width=14cm]{files/git/stats/files_by_date-crop}
   \listoffixmes
 %}{}
