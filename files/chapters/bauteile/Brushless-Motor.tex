@@ -1,0 +1,32 @@
+\subsubsection{Brushless-Motor}
+\begin{wrapfigure}{r}{0pt}
+	\includegraphics[width=7cm]{files/images/Brushless-Mortor/Motor-rm-bg\imageresize}
+	\captionof{figure}{Brushless-Motor der Firma Robbe}
+	\label{fig:Brushless-Mortor-Robbe}
+\end{wrapfigure}
+
+Die Motoren, die sich im MikroKopter Projekt durchgesetzt haben sind bürstenlose Gleichstrommotoren.
+Der wichtigste Unterschied zu einem \enquote{normalen} Elektromotor ist,
+dass keine Bürsten (Schleifkontakte) benötigt werden,
+da der bewegliche Teil des Motors mit Permanentmagneten ausgestattet ist
+und auf dem unbeweglichem Teil das Drehfeld erzeugt wird.
+Somit ergeben sich folgende Vorteile:
+\begin{itemize}
+	\item Hoher Wirkungsgrad (da keine Bürsten)
+	\item Hohe Lebensdauer
+		(wegen dem sehr geringen Verschleiß $\rightarrow$ keine Bürsten)
+	\item Gute Regelbarkeit
+		(Drehfeld wird extern erzeugt $\rightarrow$ kann gemessen werden)
+\end{itemize}
+
+Jeweils ein Brushless-Motor wird von einem Motorregler kontrolliert.
+Diese sind über drei Pole miteinander verbunden.
+
+In meiner Konfiguration kommen die Brushless-Motor von Robbe ROXXY
+BL-Outrunner 2824-34 zum Einsatz.
+% Abb.~\vref{fig:Brushless-Mortor-Robbe}
+Diese haben die Abmessungen \unit{28,8 x 26}{\milli\metre}
+und wiegen \unit{48}{\gram}.
+
+Auf dem mit Permanentmagneten ausgestattete Teil des Motors (Glocke),
+können die Propeller die Befehle der Hauptplatine in Auftrieb umsetzen.

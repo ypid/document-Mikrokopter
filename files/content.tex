@@ -1,0 +1,46 @@
+\pdfbookmark[1]{Titelseite}{titelseite}\pagenumbering{Roman}\thispagestyle{empty}
+%\input{/home/rsadmin/Dokumente/LaTeX/input-document/titelpages/Epochenheft}
+\input{files/titlepage/titlepage}
+\newpage
+%\begin{multicols}{2}
+\pdfbookmark[1]{\contentsname}{inhaltsverzeichnis}
+\tableofcontents%\vfill
+\setcounter{headpages}{\value{page}}\newpage\pagenumbering{arabic}
+%%%%%%%%%%%
+
+\input{files/chapters/Vorwort}
+
+\include{files/chapters/Einleitung}
+%% Kann ich die Datei wirklich einfach so auskommentieren?
+%% Nein
+
+%\ifDraft{\input{files/sdw_2010-12_60-69}}
+
+\include{files/chapters/Drohnen}
+
+\include{files/chapters/bau}
+
+\include{files/chapters/Autonomie}
+
+\include{files/chapters/Nachwort}
+
+\input{files/chapters/Danksagung}
+
+
+\setcounter{sectionsV}{\value{section}}      %%Speichert die sectionnummer vor \appendix zwischen
+\appendix      %% Sorgt für Buchstaben im Inhaltsverzeichnis
+\newpage
+
+\ifDraft{\nocite{*}}{}
+\printbibliography[heading=bibnumbered]
+\ifDraft{\fxnote{Quellenverzeichnis: Alle Datenbank Einträge wurden ausgegeben,
+auch solche die nicht im Text verwendet wurden (Draftversion)}}{}
+
+\newpage
+\input{files/appendix/hardwareliste}
+\newpage
+\listoffigures
+\listoftables
+%\end{multicols}
+%\lstlistoflistings			%% Quellcodeverzeichnis
+\input{files/header/acronym}

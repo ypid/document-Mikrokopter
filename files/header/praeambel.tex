@@ -1,0 +1,50 @@
+%% <Schule/Epochenheft.tex> Vorlageversion 1.1.1 <Robin Schneider>
+%%%Präambel
+\usepackage{
+	physicsRS,
+	scrartclRS,
+	defaultRS,
+%	literatureRS,
+%	debugRS,
+	timeRS,
+	graphicRS,
+	wrapfigWorkaroundRS,
+	mathematicsRS,
+	SourceCodeRS,
+%	gamesRS,
+	layoutRS,
+%	footingRS,
+	extensionsRS,
+	docExtensionsRS,
+	schoolRS,
+%	chemistryRS,
+	lcd,
+}
+\LCDcolors{white}{blue}
+\newcommand{\unit}[2]{\SI{#1}{#2}}
+\input{files/header/pakete}
+%% Spetzifische angaben
+\input{files/header/metainfos}
+\SetURL{http://ypid.files.wordpress.com/2013/04/mikrokopter.pdf}
+\choosedefaultlicense
+\SetCREATEDATE{2010}{10}{29}{21}{41}{00}		%% YYYYMMDDHHMM
+\SetABGABEDATUM{2}{2011}{06}{30}{1}
+\readgitstat{7}
+\usepackage{
+	schoolPDFinfoRS,
+	tableRS,
+}
+\input{files/header/URLs}
+%\SetDraft{on}
+\newcommand{\imageresize}{-resize}
+\ifDraft{
+  \usepackage{layoutRS}
+  \ifoot{\thepage~(\Numstring{page})}
+  \cfoot{Version: \printversion}
+  \usepackage[draft,nomargin,inline]{fixme}
+  \fxusetheme{colorsig}\renewcommand{\germanlistfixmename}{Verzeichnis der Anmerkungen}}{
+  \usepackage{fixme} %\newcommand{\imageresize}{}
+}
+\newcommand{\FortschritteigenesErmessen}{700}
+\renewenvironment{figurewrapper}{\begin{figure}[H]\centering}{\end{figure}}
+%\renewenvironment{figurewrapper}{\begin{minipage}{\textwidth}\centering}{\end{minipage}}

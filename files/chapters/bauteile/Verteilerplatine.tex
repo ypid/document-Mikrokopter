@@ -1,0 +1,31 @@
+\subsubsection{Verteilerplatine}
+\begin{wrapfigure}{r}{0pt}
+	\includegraphics[width=9cm]{files/images/Verteilerplatine/IMG_7084-rm-bg\imageresize}
+	\captionof{figure}{Stromverteiler-Leiterkarte}
+	\label{fig:Stromverteiler-Leiterkarte}
+\end{wrapfigure}
+
+Die Verteilerplatine\footnote{Stromverteiler-Leiterkarte (4fach-BL)}
+verteilt den Strom vom Akku
+und die Steuersignale von der Hauptplatine.
+Somit sinkt die Anzahl der benötigten Kabel deutlich.
+Auf dieser Verteilerplatine können vier Motorregler eingelötet
+und dadurch mit Strom und der \ac{I2C} Schnittstelle verbunden werden.
+Auf Abb.~\vref{fig:Stromverteiler-Leiterkarte} sind
+die vier Motorregler bereits auf die Verteilerplatine gelötet.
+Es ist auch eine Transistorschaltung vorgesehen,
+um zwei Verbraucher mit maximal \unit{800}{\milli\ampere}
+pro Verbraucher schalten zu können.
+
+Außerdem wird die komplette Stromversorgung des Mikrokopters über einen
+elektronischen Leistungsschalter (BTS555), ein Halbleiterrelais, geschaltet.
+Da die meisten erhältlichen mechanischen Kippschalter keine hohen Gleichströme
+zuverlässig schalten können.
+Weil bei Gleichstrom, anders als bei Wechselstrom,
+ein viel längerer und anhaltender Lichtbogen entsteht,
+der die Kontaktflächen des Schalters schnell abbrennen lässt.
+Dadurch steigt sein Innenwiderstand.
+Die folge: Hitzeentwicklung und Energieverlust.
+
+Die Verteilerplatine versorgt die Hauptplatine mit Strom
+und ist unterhalb der Hauptplatine am Rahmen angebracht.

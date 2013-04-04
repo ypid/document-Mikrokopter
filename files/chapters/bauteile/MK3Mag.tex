@@ -1,0 +1,30 @@
+\subsubsection{Magnetfeldsensor}
+
+Der verwendete Magnetfeldsensor (MK3Mag) ist ein 3-Achsen-Magnetfeldsensor.
+Somit kann das Erdmagnetfeld im dreidimensionalen Raum erfasst werden.
+
+Die Abmessungen betragen \unit{38 x 22 x 10}{\milli\metre}.
+
+Die Information der Lage des magnetischen Nordpols
+kann dann dazu eingesetzt werden, um die Steuerbefehle des Piloten
+von der Blickrichtung des Mikrokopters zu entkoppeln.
+Das bedeutet das sich die Steuerbefehle nicht mehr auf die aktuelle Blickrichtung,
+sondern auf die Blickrichtung, die beim Einschalten erfasst wurde, beziehen.
+Somit muss der Pilot nicht mehr in Kenntnis von der aktuellen Blickrichtung
+des Mikrokopters sein, um diesen zu steuern.
+\begin{wrapfigure}{r}{0pt}
+	\includegraphics[width=7cm]{files/images/MK3Mag/oben-1-rm-bg\imageresize}
+	\captionof{figure}{Magnetfeldsensor (MK3Mag)}
+\end{wrapfigure}
+Wenn man beispielsweise das Kommando \enquote{neige dich nach \enquote{Vorne}}
+gibt, dann ist \enquote{Vorne} nicht mehr der rote Ausleger sondern
+die Himmelsrichtung auf die der rote Ausleger beim Start der Motoren gezeigt hat.
+
+Der Magnetfeldsensor ist auch erforderlich, um eine zuverlässige
+Navigation über \ac{GPS} zu ermöglichen.
+Da man über \ac{GPS} nur einen Punkt im
+dreidimensionalen Raum\footnote{genau genommen in der vierdimensionalen Raumzeit}
+erhält.
+Daraus geht aber noch nicht die Raum Orientierung des Mikrokopters hervor.
+Die Richtung, in die der rote Ausleger zeigt, lässt sich über \ac{GPS} nur erfahren,
+wenn sich der Mikrokopter bewegt.

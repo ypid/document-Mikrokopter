@@ -1,0 +1,423 @@
+\section{Drohnen}
+\label{sec:drohnen}
+
+\subsection{Begriffsklärung}
+\label{subsec:drohnen:begriffskläaerung}
+
+Eine Drohne ist im klassischen Sinne eine männliche Biene, die zu Tausenden in einem Bienenvolk lebt.
+In diesem Volk kommt es nicht auf eine einzelne Biene an, sondern darauf das es genug Arbeiter gibt, um die Arbeiten zu bewerkstelligen.
+Aufgrund dieser Entbehrlichkeit der einzelnen Einheiten wurde der Begriff auch für
+\ac{UAV} gewählt.
+
+%Für die meisten Militärs dieser Welt ist
+Diese Drohnen sind relativ billig, die Ausbildung entsprechender Piloten wäre teurer.
+So das diese in ganzen Schwärmen geschickt werden können.
+
+%Die erste Drohne wurde im Zweiten Weltkrieg gebaut und bestand aus einem Sprengkörper und einer
+%unförmigen Drehscheibe, die
+%mechanisch die Flugkurve kontrollierte.
+%% Nachdem ich diesen Text nach 239 Tagen erneut gelesen habe, zweifle ich an der Richtigkeit
+%% dieses Satzes
+
+Heute gibt es Drohnen in Flugzeuggröße,
+die 72 Stunden in der Luft bleiben können bis hin zum \unit{0{,}06}{\gram} schweren Flugroboter.
+Dies wurde erst durch die rasante Entwicklung der Elektronik und Sensortechnik möglich.
+%Sie können mithilfe von immer besseren Automatismen und der Entwicklung von \ac{KI} selbst auf ihre Umgebung reagieren und
+%sich ihr anpassen.
+%\ac{KI} (im Englischen artificial intelligence, AI) ist ein Teilgebiet der Informatik, welches sich mit der
+%Automatisierung
+%intelligenten Verhaltens befasst.\footcite{wiki:KI}
+%Es ist also der Versuch, ein System zu erschaffen, was eingenständig Probleme lösen kann,
+%auf die dieses nicht explizit programmiert wurde. Und darüber hinaus\dots
+
+\begin{comment}
+\begin{figurewrapper}	%% http://www.spiegel.de/thema/drohnen/
+	\includegraphics[width=\hsize]{files/images/Drohnen/image-139405-topicbig-oxxa-spiegel}
+	\captionof{figure}[Unbemannte Drohne der US Air Force]{Unbemannte Drohne der US-Luftwaffe (RQ-4 Global Hawk)
+		\newline Quelle: \url{http://www.spiegel.de/thema/drohnen/} (abgerufen am 12.\,06.\,2011)}
+\end{figurewrapper}
+% Ist natürlich Urheberrechtlich geschürzt. Und leider ohne entsprechende Lizenz freigegeben.
+\end{comment}
+
+\pagediffValue{subsubsec:drohnen:AbwaegungderArgumente:Einleitung}{sec:drohnen:end}
+%% Erzeugt beim ersten LaTeX lauf einen Fehler
+\addtocounter{tmp}{-1}	%% Da das Label auf der selben Seite ist, wie dieser Abschnitt
+\subsection{Drohnen in der militärischen und zivilen Anwendung}
+\label{subsec:drohnen:AbwaegungderArgumente}
+Da Drohnen in militärischer Anwendung schon sehr stark in Benutzung sind
+und dieser Trend nicht aufhaltbar scheint,
+beschäftige ich mich auf den nächsten
+\fnumprintc{tmp} Seiten mit den Fragen,
+die mit der militärischen und zivilen Anwendung von Drohnen,
+aufgeworfen werden.
+
+\subsubsection{Einleitung}
+\label{subsubsec:drohnen:AbwaegungderArgumente:Einleitung}
+Die Entwicklung von autonomen Robotern wird maßgeblich
+durch den militärischen Sektor vorangetrieben.
+Hauptsächlich um die Kriegsführung noch effizienter zu gestalten.
+Aber es gibt auch viele zivile Projekte,
+die friedlichere Ziele verfolgen.
+Die technische Entwicklung verläuft um einiges schneller, als die
+Fragen die durch die Benutzung solcher unbemannter autonomer Systeme
+auftreten, beantwortet werden können.
+Solche Fragen haben häufig einen ethischen, politischen
+und juristischen Hintergrund.
+Konkret steht auch die Frage zur Debatte, ob nicht der Einsatz dieser neuen technischen
+Möglichkeiten eine erhöhte Abstraktion zu dem eigentlichen Geschehen zur Folge hat
+und somit die Hemmschwelle der Entscheidungsträger in der Kriegsführung sinkt.
+
+Der Einsatz von Drohnen bietet ohne Zweifel viele Vorteile, aber auch Nachteile.
+Ich werde versuchen im nachfolgenden Text beide Seiten näher zu beleuchten.
+Aufhänger dieses Textes ist der Artikel von \textcite{sdw:2010-12:DfK}.
+
+\subsubsection{Drohnen im Zivilen}
+\label{subsubsec:drohnen:AbwaegungderArgumente:Zivilen}
+Betrachten wir zuerst den Einsatz von Drohnen im zivilen Sektor.
+
+Drohnen werden immer billiger, somit werden diese immer mehr
+zu einer Freizeitgestaltung.
+Eine Drohne für den zivilen Gebrauch basiert häufig auf dem Funktionsprinzip
+eines Quadrokopters.
+
+Ein Quadrokopter verfügt über vier oder mehr Propeller die kreuzförmig angeordnet sind.
+Zwei gegenüberliegende Propeller drehen sich im Uhrzeigersinn
+und die anderen zwei drehen sich gegen den Uhrzeigersinn.
+
+Aufgrund dieses Funktionsprinzips werden keine verstellbaren Propeller benötigt
+und es wird auch keine Energie für das Ausgleichen des Drehmomentes in der Hochachse benötigt,
+wie dies bei einem Hubschrauber mit dem Heckrotor der Fall ist.
+
+Die Manövrierbarkeit eines Quadrokopters ist dennoch gegeben,
+da durch Veränderung der Drehzahl ein Kippen des Quadrokopters erreicht werden kann.
+Dies geschieht, indem ein Propeller um den gleichen Betrag schneller wird, wie der zweite
+gleichläufige Propeller langsamer ist.
+Ein Kippen nach Vorne oder Hinten wird als Nicken
+und ein seitliches Kippen als Rollen bezeichnet.
+
+Außerdem kann auch noch eine Drehung um die Hochachse ausgeführt werden.
+Indem die Drehzahl zweier gleichläufiger Propeller verringert
+und dieser Auftriebsverlust durch die zwei anderen Propeller kompensiert wird.
+Dies wird als Gieren bezeichnet.
+
+Ein Selbstbauprojekt, das dieses Prinzip umsetzt ist der von
+Ingo Busker und Holger Buss initialisierte, \href{http://www.mikrokopter.de}{MikroKopter}.
+Es gibt zudem noch das kommerzielle Projekt \href{http://www.microdrones.com}{microdrones}
+und inzwischen auch noch eine Reihe weiterer Projekte.
+
+\bigskip
+Der einfachste Fall ist das manuelle fliegen der Drohne, wie im Modellbau üblich.
+Man kann aber auch mit Hilfe einer Videobrille fliegen,
+also nach den Videobildern von der Drohne, die direkt auf zwei
+kleine Bildschirme übertragen werden. So hat man das Gefühl selbst in
+der Drohne zu sitzen, aber ohne die Gefahr bei einem Absturz Schaden zu
+nehmen.
+
+Man kann auch versuchen mithilfe einer Drohne verschiedene Aufgaben zu lösen,
+wie zum Beispiel Lasten mit einem an der Drohne befestigtem Haken aufnehmen
+und wieder absetzen oder das Umfliegen von Hindernissen.
+Oder man fliegt Figuren (Kunstflug) oder ohne bestimmte Vorsätze.
+
+%Man kann eine Drohne natürlich auch etwas weniger spielerisch einsetzen.
+%Beispielsweise in dem man, auf seinem Grundstück eine Drohne
+%startbereit hat, um im Bedarfsfall eine variable Überwachung zur
+%Verfügung zu haben. Um sich einen Überblick verschaffen zu können.
+%Somit lässt sich die Anzahl nötigen Überwachungskameras, um ein Gelände
+%zu überwachen, stark reduzieren und damit kosten sparen, um dieselbe
+%Abdeckung eines Bereiches zu ermöglichen.
+
+Außerdem lassen sich Bilder und Videos aus der Vogelperspektive
+aufnehmen, was schon von vielen Berufsgruppen genutzt wird.
+Beispielsweise bei Unfällen und Katastrophen um die Rettungskräfte besser zu koordinieren
+und eine Dokumentation des Geschehens zu ermöglichen.
+
+\bigskip
+
+Der Vorteil einer Drohne ist, der im Verhältnis zu einem Modellhubschrauber
+oder gar einem kleinen Flugzeug niedrigere Preis,
+den eine Drohne im Eigenbau kostet.
+%dass über die gleichen Fähigkeiten verfügt
+Außerdem ist bei einem üblichen Quadrokopter die Wahrscheinlichkeit klein,
+dass ein ernsthafter Schaden durch menschliches oder technisches Versagen entsteht.
+Da durch Techniken wie \ac{GPS}, Höhenregelung,
+Kompass und Kollisionsvermeidung der Pilot bei der Steuerung unterstützt wird,
+und im Idealfall, Fehler nicht ausgeführt werden.
+Außerdem bietet eine Drohne Techniken wie \ac{GPS}
+die neu im Modellbaubereich sind.
+Wie zum Beispiel das Automatische zurückfliegen zur Startposition
+oder das Halten der Position.
+Da aber Schäden nie ausgeschlossen sind, gibt es im privaten
+Bereich Modellbau-Haftpflichtversicherungen,
+die eventuelle Personen- und Sachschäden übernehmen.
+
+Ein Nachteil hingegen ist die mögliche Verletzung der
+Persönlichkeitsrechte eines Nachbarn.
+Das Persönlichkeitsrecht einer Person ist beispielsweise dann verletzt,
+wenn diese gezielt gefilmt wird.
+Oder auch wenn man in dessen Luftraum fliegt, was mit Geräuschen verbunden ist
+oder das Filmen des Grundstücks ohne dessen Einwilligung.
+
+\subsubsection{Drohnen in militärischer Anwendung}
+\label{subsubsec:drohnen:AbwaegungderArgumente:Militaer}
+
+Im militärischen Bereich werden Drohnen und andere technische
+Hilfsmittel immer wichtiger.
+So sind bei der US-Armee circa \numprint{7000} \enquote{unbemannte} Fluggeräte
+und \numprint{12000} Bodenfahrzeuge im Einsatz.
+
+Im militärischen Bereich wird es darauf hinauslaufen,
+dass der Mensch der Maschine nur noch Aufträge überträgt,
+die diese ausführen sollen.
+Der Roboter kann dann selbstständig in einem Einsatz entscheiden.
+Eine solche Entscheidung könnte zum Beispiel die
+Tötung einer Person betreffen.
+
+Da aber Roboter, anders als Menschen, einen Auftrag unter allen
+Umständen ausführen, werden selbst fehlerhafte Befehle ausgeführt.
+Ein Mensch würde diese Fehler erkennen und abbrechen.
+Was ein Nachteil des Roboters ist, da hierdurch
+Soldaten oder auch Zivilisten verletzt oder getötet werden.
+%Dieses Problem wird sich wohl zukünftig durch bessere Sensoren im
+%Zusammenspiel mit verbesserter Software kontrollieren lassen.
+
+Der Vorteil ist, dass Roboter militärisch präziser sind, also eine
+höhere Trefferwahrscheinlichkeit als Menschen haben.
+Zudem sind Drohnen billiger.
+Somit wird der Einsatz von Drohnen und Robotern im Krieg
+bis hin zum vollständig geführten Maschinenkrieg zunehmen, was
+die Schwelle solch einen Krieg zu beginnen, senkt.
+Da es für die Befehlshaber mit weniger Problemen
+und Diskussionen verbunden sein wird, Roboter zu Schicken,
+da die eigenen Soldaten keiner Gefahr mehr ausgesetzt sind.
+
+\bigskip
+
+Hier zeichnet sich aber direkt das nächste Problem ab.
+Denn der Mensch, der einen Roboter fernsteuert,
+kann Tausende von Kilometern vom Geschehen entfernt vor einem Bildschirm setzen
+und wird daher die Situation anders einschätzen, als wenn er vor Ort wäre.
+Es ist für diese Person nicht leicht, zu erkennen ob das, was sich da auf
+dem Bildschirm abspielt, real oder virtuell ist.
+Es könnte dazu übergehen, dass es sehr schwer wird, zu unterscheiden
+ob das, was man auf dem Bildschirm abgebildet sieht virtuell ist
+oder an einem andern Ort wirklich in die Tat umgesetzt wird.
+In solch einem Fall wäre es denkbar 15jährige Jugendliche vor den Bildschirm zu setzten,
+da diese, im Vergleich zu anderen Altersgruppen,
+eine sehr niedrige Reaktionszeit besitzen und somit effizienter sind.
+Diese würden die Tatsache, dass sie auf reale Menschen schießen wohl mit der Zeit verdrängen
+oder gar nicht erst erfahren, was ihr Handeln wirklich bewirkt.
+Für diese wäre es eine \enquote{schöne} Freizeitbeschäftigung,
+was sie sonst wohl auch nicht anders tuen würden,
+nur hier erhalten sie noch Geld dafür~\dots
+
+Der nächste denkbare Schritt ist ein
+Algorithmus\footnote{Freund-Feind-Erkennung nach dem Motto
+\enquote{Erst schießen, dann fragen stellen}},
+der auf alles schießt, was als Mensch erkannt wurde und eine Bedrohung darstellen könnte.
+Ein Problem ist hier, dass ein Roboter mit Hilfe eines Algorithmus zu einer
+zuverlässigen Freund-Feind-Erkennung in der Lage sein muss,
+um in mehr Bereichen eingesetzt werden zu können.
+
+Diese Szenarien sind durchaus real und keine ferne Zukunftsvision. Um
+dem entgegenzuwirken, formulierte der Science-Fiction-Schriftsteller
+Isaac Asimov schon Mitte des 20ten Jahrhunderts die drei aufeinander
+aufbauenden asimovschen Gesetze.\footcite{Robotergesetze:Asimov}
+
+\begin{enumerate}
+	\item Ein Roboter darf kein menschliches Wesen verletzen oder durch Untätigkeit gestatten,
+		dass einem menschlichen Wesen Schaden zugefügt wird.
+		\label{Robotergesetze:Asimov:Eins}
+	\item Ein Roboter muss den ihm von einem Menschen gegebenen Befehlen gehorchen --
+		es sei denn, ein solcher Befehl würde mit Regel
+		\hyperref[Robotergesetze:Asimov:Eins]{eins} kollidieren.
+		\label{Robotergesetze:Asimov:Zwei}
+	\item Ein Roboter muss seine Existenz beschützen, solange dieser Schutz nicht mit Regel
+		\hyperref[Robotergesetze:Asimov:Eins]{eins} oder
+		\hyperref[Robotergesetze:Asimov:Zwei]{zwei} kollidiert.
+\end{enumerate}
+
+Diese haben aber keine Relevanz im Militärischen,
+was von Friedensaktivisten nicht ganz ohne Widerstand akzeptiert wird.
+
+Anfang 2008 forderten britische Friedensaktivisten das
+autonome Roboter nicht die Entscheidung treffen dürfen,
+einen Menschen zu töten.
+Das gleiche Problem besteht mit der neuen Generation von
+Streubomben. Diese suchen mit Infrarotsensoren den Boden nach
+Hitzequellen ab. Werden keine entdeckt, explodieren sie noch in der
+Luft, um nach dem Konflikt keine Menschen zu gefährden. Ob dieses
+Verbot ähnlich erfolgreich wie das
+\href{http://www.un.org/millennium/law/xxvi-22.htm}{Ottawa-Abkommen}
+von 1997, das Antipersonenminen verbietet und mittlerweile von über
+150 Ländern ratifiziert (umgesetzt) wurde, wird, bleibt
+abzuwarten.\footcite{heise:VerbotvonKampfrobotern}
+
+\bigskip
+
+Es bleibt auch noch die Frage was passiert,
+wenn jemand durch eine Maschine verletzt oder getötet wird.
+Auch das ist schon vorgekommen und die
+Hersteller oder Besitzer solcher Maschinen haben sich meist mit
+Schadensersatzzahlungen aus dem Fall befreit.
+Aber wer wirklich schuldig ist, bleibt schwer zu klären.
+Da eine Maschine nicht über einen eigenen Willen oder Bewusstsein verfügt
+und nicht als Mensch angesehen wird.
+Es muss also nicht von einem vorsätzlichen,
+beziehungsweise beabsichtigtem Verbrechen der Maschine ausgegangen werden.
+Die Maschine ist also momentan nur ein Werkzeug und kann nicht selbst eine Tat verüben,
+sondern nur dazu gebaut werden.
+Wie beispielsweise eine Pistole die nicht selbst einen Mord begeht,
+sondern erst durch einen Menschen zur todbringenden Waffe wird.
+Unsere Gesetze, die beispielsweise den Tatbestand des Mordes regeln,
+lassen sich also nicht auf Maschinen übertragen.
+
+Es bleibt noch die Möglichkeit den Hersteller in die Verantwortung zu
+ziehen.
+Dazu müsste sich aber beweisen lassen, dass eine nach dem jeweiligem Gesetz
+strafbare Handlung vom Hersteller vorgesehen war oder Fahrlässigkeit vorliegt.
+Da Fahrlässigkeit durch einen Programmier- oder Konstruktionsfehler hier
+nicht einfach nur zu einem Programmabsturz führt,
+sondern im Zweifelsfall werden Menschen getötet.
+
+Der Anwender oder Besitzer würde sich ebenfalls rechtfertigen müssen.
+In diesem Fall wird wieder, ähnlich wie bei dem Hersteller,
+die Absicht des Anwenders oder Besitzer geklärt werden müssen.
+
+Wenn es jedoch zu einem wirklichen Bewusstsein, in der Maschine,
+kommt, ändert sich wohl einiges.
+
+In der Robotik könnte es dazu übergehen eine \ac{KI} selbst dafür zu
+bestrafen, dass diese, ähnlich wie ein Mensch aus den eigenen Fehlern
+lernen kann.
+Dies wird unter anderem in dem Film
+\enquote{\href{http://www.imdb.de/title/tt0343818/}{iRobot}} so skizziert.
+In dem ein Roboter beginnt einen eigenen, freien Willen zu entwickeln
+und somit nicht mehr an die asimovschen Gesetze gebunden ist.
+Dieser begeht einen Mord und wird verhaftet.
+Die Anklage ist jedoch schwer möglich, da der Roboter nicht als Mensch
+angesehen wir und somit keinen Mord begehen kann.
+Auf solch ein Zukunftsszenario ist noch keiner vorbereitet.
+%Das Wort Mord müsste neu definiert werden~\dots
+
+\bigskip
+Im folgendem möchte ich noch einen Ausblick auf Roboter,
+die sehr viel kleiner sind, wagen.
+Wobei es sich allerdings noch größtenteils um Fiktion handelt.
+
+Die Roboter dieser Größe werden als Nanoroboter,
+beziehungsweise Nanobots bezeichnet.
+Diese Roboter haben eine Größe die einem Blutkörperchen entspricht.
+Diese haben sicher ein enormes Potenzial in der Medizin, da sie sich im menschlichen
+Organismus, zum Beispiel im Blutkreislauf, bewegen können und dadurch an so
+gut wie jede Stelle im Körper gelangen können.
+So können diese den Organismus in der Erhaltung der Körperfunktionen unterstützen.
+
+Es ist denkbar dass Nanobots auch zum Recycling von \enquote{Müll} eingesetzt werden.
+Da diese Nanobots Atome und Moleküle auf atomarer Ebene neu
+anordnen und so benötigte Rohstoffe aus anderen Rohstoffen erzeugen
+können oder direkt zu einem fertigen Objekt zusammenbauen können.
+%Zudem können sich Nanobots selbst replizierenden
+Zum Beispiel wen jemand in der Zukunft einen neuen Esstisch benötigt,
+geht er am besten zum Designer seines Vertrauens
+und lässt sich den Tisch am Computer entwerfen.
+Der Designer schickt den Datensatz dann an eine Werkstatt,
+in der der Tisch in einem einzigen Arbeitsgang Atom für Atom zusammengesetzt wird.
+Ohne Fugen, Schrauben oder Dübel.
+Der Tisch könnte dabei so robust wie Stahl, aber leicht wie Kunststoff sein.
+Die Atome wären in einer Weise angeordnet, die an keinen bekannten Rohstoff erinnert.
+\footcite{Drexler:EnginesofCreation}
+
+Zugleich geht aber auch eine hohe Gefahr von diesen Nanobots aus.
+Zum Beispiel als Spionagemöglichkeit, indem sich die Nanobots in der Umgebungsluft
+als \enquote{intelligenter Staub} befinden und so eine umfassende Überwachung
+eines Gebietes ermöglichen.
+
+Eine Erkennung dieser Nanobots dürfte sich ohne moderne Hilfsmittel sehr schwer gestalten,
+geschweige denn die Abwehr oder Beseitigung,
+da man zur Erkennung, dieser winzigen Strukturen, wohl ein Elektronenmikroskop bräuchte.
+
+Wobei aber die Meinungen über den Nutzen, den uns die Nanobots tatsächlich bringen
+werden, sehr auseinander gehen,
+da die im vorherigen Abschnitt beschriebenen Möglichkeiten
+noch theoretischer Natur sind und noch nicht praktisch umgesetzt werden konnten.
+
+%\newpage
+\subsubsection{Resümee}
+\label{subsubsec:drohnen:AbwaegungderArgumente:Resuemee}
+
+Die militärische Anwendung von Drohnen
+halte ich für nicht sonderlich erstrebenswert
+für unsere Gesellschaft, da dadurch ein noch höherer Grad an Sicherheit
+geschaffen werden soll.
+% gesundes Maß an Sicherheit ist zu suchen
+Beispielsweise durch zusätzliche und permanente Überwachung.
+Was nicht unbedingt mein Bestreben ist.
+Da dies zu einem höheren Maß an Kontrolle führt,
+wodurch jegliche Freiheit und Individualität verloren gehen könnte.
+Wodurch auch die Kreativität der Menschen abnehmen wird.
+
+Im zivilen Sektor sehe ich solche Gefahren weniger.
+Da die Entwicklung und Benutzung von Drohnen im Zivilen
+in der Regel mit anderen Zielen betrieben wird.
+Also nicht die gezielte Tötung anderer Menschen,
+was das Ziel bei der militärischen Anwendung ist.
+Aber auch im zivilen Sektor werden Drohnen zunehmend zur
+Überwachung (von öffentlichen Plätzen) eingesetzt,
+was mit den gleichen Gefahren verbunden ist,
+wie bei der militärischen Nutzung.
+
+\bigskip
+Ich betrachte allgemein die technische Entwicklung als Weiterführung
+der biologischen Evolution,
+aufgrund der rasanten Entwicklung in der Informatik,
+deshalb werden eines Tages Maschinen uns
+Menschen, als die \enquote{Krone der \enquote{Schöpfung}}
+beziehungsweise der am höchsten Entwickelten Lebensform
+auf dieser Erde, ersetzen können.
+
+Zu diesem Schluss komme ich aufgrund der sehr beeindruckenden Fortschritte
+in der Technik und im Bereich \ac{KI} in den vergangenen hundert Jahren.
+Als einfaches Beispiel:
+Das menschliche Gehirn kann Schätzungen zufolge 2 Petabyte
+an Informationen in chemischer Form in den Synapsen halten.
+%% http://de.wikipedia.org/wiki/Gehirn#Speicher
+%% http://www.wolframalpha.com/input/?i=2PB
+Diese Kapazität wird auch schon von einem Rechenzentrum erreicht.%
+\footnote{Mir ist natürlich klar, dass das Gehirn weit mehr ist als ein großer Datenspeicher~\dots}
+
+Stehphen Howking sagte zur Entwicklung von \ac{KI} folgendes: \\
+\enquote{Einige Menschen behaupten Computer würden niemals in der Lage sein,
+echte Intelligenz zu entwickeln, was auch immer das sein mag. Doch
+wenn komplizierte chemische Moleküle im Menschen so zusammenwirken
+können, dass sie diesen mit Intelligenz ausstatten, dann sehe ich
+nicht ein, was ebenso komplizierte elektronische Schaltkreise daran
+hindern sollte, Computer zu intelligentem Verhalten zu befähigen.}
+\footcite{Hawking:Zitat:KI}
+
+Auch wenn es sich bei seiner Aussage um einen Zirkelschluss handelt,
+da er mit der unbewiesenen Aussage beginnt, dass
+\enquote{komplizierte chemische Moleküle im Menschen so
+zusammenwirken können, dass sie diesen mit Intelligenz ausstatten}
+so ist seine Folgerung dadurch auch nicht widerlegt und kann
+dennoch eintreten~\dots
+
+%Bis es aber soweit ist, dass Maschinen über echte Intelligenz
+%verfügen, sollten wir darauf achten, dass dies nicht ins Negative
+%umschlägt.
+
+%\bigskip
+%Im militärischen Sektor sollte es aber meiner Meinung nach zu stärkeren
+%Kontrollen und Einschränkungen, bezüglich des ferngesteuerten Töten,
+%kommen da hier ohne Gerichtsverfahren auf Verdacht die Todesstrafe
+%angewendet wird beziehungsweise es sollte an die Umsetzung der
+%asimovschen Gesetze gedacht werden, auch wenn dies die Nutzung von
+%Robotern und Drohnen für die Tötung von Personen untersagen würde.
+
+%Die Umsetzung dieser Forderungen liegt bei der Politik, der, in diesem
+%Gebiet, führenden Ländern.
+
+\bigskip
+Die weitere Entwicklung der Roboter bleibt also mit Vorsicht zu behandeln,
+denn \enquote{letztlich wissen wir aber trotz aller Vermutungen noch nicht,
+wie sich die Robotik entwickeln und wohin sie uns führen wird.}\footcite[74]{sdw:2010-12:DfK}
+\label{sec:drohnen:end}

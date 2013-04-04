@@ -1,0 +1,408 @@
+\section{Autonomes fliegen}
+\label{sec:autonomes_fliegen}
+
+Um mein, in der \nameref{sec:einleitung} definiertes Ziel, zu erreichen,
+musste jetzt noch eine Sensor- und Softwareeinheit gefunden werden.
+
+Diese Einheit muss folgende Anforderungen erfüllen:
+\begin{itemize}
+	\item Sie muss mit der Hauptplatine kommunizieren können,
+		um die Flugkorrekturen umzusetzen.
+	\item Sie darf nicht zu Schwer sein (unter \unit{100}{\gram} ist vertretbar)
+	\item Sie darf nicht zu viel Strom benötigen,
+		da alles von einem Akku versorgt werden sollte
+		(unter \unit{500}{\milli\ampere} pro Flug ist vertretbar).
+	\item Sie sollte möglichst früh ein Hindernis detektieren,
+		um noch Zeit zum Ausweichen zu geben.
+	\item Es sollte möglich sein, dieses System zu deaktivieren,
+		um im Fehlerfall von Hardware oder Software meiner Erweiterung
+		noch die Kontrolle zu ermöglichen.
+	\item Die Kosten sollten \EUR{200}
+		nicht überschreiten.
+\end{itemize}
+
+\subsection{Überlegung eines Ausweichalgorithmus}
+Ein erster Ausweichalgorithmus, den ich mir überlegt habe, ist
+in Abb. \vref{fig:Programmablauf} als Flussdiagramm abgebildet.
+Ich plante einen Entfernungssensor der den
+Abstand nach unten misst und zwei die möglichst weit versetzt am
+vorderem Ausleger angebracht sind.
+
+Das Ziel sei als \ac{GPS}-Koordinate bekannt.
+
+Mit dem Entfernungssensor, der nach unten ausgerichtet ist,
+sollte immer die gleiche Höhe über Grund gehalten werden.
+
+Die zwei Entfernungssensoren, die am ersten Ausleger,
+also in Flugrichtung angebracht sind,
+sollten ein Hindernis erkennen.
+Nach einer Prüfung ob rechts beziehungsweise links kein
+Hindernis detektiert wurde sollte, solange
+das Hindernis noch den Weiterflug verhindert,
+nach rechts beziehungsweise links geflogen werden.
+Also in die Richtung in der kein Hindernis detektiert wurde.
+Wenn beide Sensoren das Hindernis melden, wird direkt
+die Höhe um maximal \unit{10}{\metre} erhöht.
+Falls das Hindernis in diesem Zustand des Algorithmus
+immer noch den Weiterflug verhindert, sollte wieder zu
+der Startkoordinate zurückgeflogen werden.
+
+Die Häufigkeit der Entfernungsmessungen definierte ich mit
+\unit{10}{\hertz} also 10 mal pro Sekunde.
+
+\begin{figurewrapper}
+        \includegraphics[width=13cm]{files/images/dia/Kollisionsvermeidung-Programmablauf-crop}
+        \captionof{figure}{Programmablauf zur Kollisionsvermeidung}
+        \label{fig:Programmablauf}
+\end{figurewrapper}
+
+Nach diesen Überlegungen begann ich mit der Suche nach passenden Sensoren.
+Meine erste Idee war Ultraschall.
+
+\subsection{Entfernungsmessung mit Ultraschall}
+\subsubsection{Theorie}
+Die Entfernungsmessung mit Ultraschall funktioniert
+meist\footnote{bei dem Ultraschallsensor B214
+kommt dagegen das Prinzip
+der \enquote{akustischen Rückkopplung} zum Einsatz.
+Dieses Prinzip lässt sich auch bei Mikrofon und Lautsprecher beobachten.}
+nach dem Prinzip der Laufzeitmessung.
+Das bedeutet, dass der Sensor, der aus einem Sender und Empfänger besteht,
+Schallwellen erzeugt.
+Diese breiten sich mit einer bekannten Geschwindigkeit (etwa \unit{330}{\metre\per\second}) aus.
+Treffen die Schallwellen auf ein schallreflektierendes Objekt,
+dann wird der Schall reflektiert.
+Dieses Echo wird vom Sensor erfasst
+und die Zeitdifferenz vom Aussenden bis zum Wiederkehren bestimmt.
+Dieses Prinzip ist als Sonar bekannt.
+
+Die Entfernung zu den Objekten, dessen Echos vom Sensor erfasst wurden,
+lässt sich mit folgender Formel berechnen:
+
+\begin{align}
+	r &= \frac{c\cdot \Delta t}{2}
+\end{align}
+
+Bedeutung der Formelzeichen:
+\begin{eqlist}
+	\item[$r$] entspricht der Entfernung zu einem Objekt.
+	\item[$c$] ist in dieser Formel nicht die Lichtgeschwindigkeit,
+		sondern da es sich um Schallwellen handelt entspricht diese
+		Konstante der Schallgeschwindigkeit in Luft
+		(circa \unit{1235}{\kilo\metre\per\hour}).
+	\item[$\Delta t$] entspricht der Signallaufzeit
+		vom Aussenden bis zum Wiederkehren.
+\end{eqlist}
+
+\subsubsection{Praxis}
+\begin{wrapfigure}{r}{0pt}
+%\begin{figurewrapper}
+	\includegraphics[width=6cm]{files/images/Ultraschall-Sensoren/IMG_7053-rm-bg\imageresize}
+	\captionof{figure}{Ultraschallsensor (B214)}
+%\end{figurewrapper}
+\end{wrapfigure}
+Ich begann, mit Ultraschall-Sensoren zu experimentieren.
+Ich besorgte mir anfangs einen kleinen Bausatz\footnote{siehe Datenblatt des Bauteils:
+\url{http://www.kemo-electronic.de/datasheets/b214.pdf}}
+der eine angegebene Reichweite von 10--\unit{80}{\centi\metre} hat.
+Ein entsprechend großes und schallreflektierendes Objekt was sich innerhalb
+dieses Abstandes befindet wird über eine leuchtende \ac{LED}
+signalisiert.
+Die Empfindlichkeit lässt sich nachjustieren.
+
+Leider war die Zuverlässigkeit dieses Bausatzes nicht sehr hoch.
+Das bedeutet, dass zum Beispiel Wände nicht mehr erkannt wurden, wenn der Ultraschall-Sensor
+auch nur um circa 20\textdegree\ vom rechten Winkel zur Wand abwich.
+Außerdem war die maximal mögliche Entfernung,
+aus der ein Objekt noch zuverlässig erkannt wurde,
+mit \unit{20}{\centi\metre}, in praktischen Anwendungsbeispielen, zu gering.
+Die Maße des Moduls sind mit \unit{55 x 45}{\milli\metre} auch etwas groß.
+
+%\wrapfill
+Damit fiel dieses Modul für meinen Anwendungsfall aus.
+
+\bigskip
+Nach längerer Suche stieß ich dann auf eine Ultraschall-Sensorreihe
+(SRF der Firma Devantech),
+die speziell für die Robotik entwickelt wurden.
+
+Da ich mir zu dem Zeitpunkt noch nicht sicher wahr
+wie ich einen Ultraschall-Sensor mit der Hauptplatine
+des Mikrokopters verbinden kann,
+beschaffte ich mir zwei Ultraschall-Sensoren
+(SRF05\footnote{siehe Datenblatt des Bauteils:
+\url{\urlSRFfive}} und
+SRF08\footnote{siehe Datenblatt des Bauteils:
+\url{\urlSRFeight}}).
+
+\begin{wrapfigure}{r}{0pt}
+%\begin{figurewrapper}
+	\includegraphics[width=6cm]{files/images/Ultraschall-Sensoren/SRF08/IMG_7165-rm-bg\imageresize}
+	\captionof{figure}{Ultraschallsensor (SRF08)}
+%\end{figurewrapper}
+\end{wrapfigure}
+
+Der Ultraschall-Sensor SRF08 verfügt, im Gegensatz zum SRF05,
+über einen \ac{I2C} Bus, denn ich dazu benutzen wollte,
+um den Sensor direkt mit der Hauptplatine zu verbinden.
+Dies hat den Vorteil das mir die Messdaten der Sensoren
+direkt bei der Berechnung der Lagenregelung,
+auf der Hauptplatine, zur Verfügung stehen.
+Die \ac{I2C} Schnittstelle des SRF08 hat auch
+den Vorteil das bis zu 16 dieser Sensoren von einem
+\ac{I2C} Bus aus ansteuerbar sind.
+
+Der SRF05 hingegen benötigt mindestens einen Port\footnote{Genauer gesagt einen digitalen Port, der
+zwischen Eingabe und Ausgabe wechseln kann.}
+über die komplette Zeit der Messung.
+Außerdem stellt der SRF05 die Entfernung nicht in \si{\centi\metre} zur Verfügung,
+sondern als ein High-Impuls, dessen Länge proportional zur Entfernung des Objektes ist.
+Die gemessene Zeit muss durch 58 geteilt werden,
+um die Entfernung in \si{\centi\metre} zu erhalten.
+
+Der SRF08 hingegen führt die Messung selbstständig aus,
+und kann, nach Beenden der Messung, über dessen Adresse
+nach dem Ergebnis (unter anderem in \si{\centi\metre})
+gefragt werden.
+Somit hat der Mikrocontroller, von dem der Messbefehl ausging,
+während der Messung Zeit für andere Operationen.
+
+Die Messhäufigkeit der beiden Sensoren wird im wesentlichen
+durch die Laufzeit der Ultraschallwellen bestimmt.
+Das bedeutet, man kann in kürzeren Abständen messen,
+wenn man nicht auf Echos von weiter entfernten Objekten wartet.
+Die Messdauer beträgt bei \unit{6}{\metre} circa \unit{65}{\milli\second}.
+
+In der folgenden Tabelle \vref{tab:Vergleich_SRF05_SRF05} sind weitere
+Details der zwei Ultraschall-Sensoren gegenübergestellt.
+
+\renewcommand{\longtableheader}{& \textbf{SRF05} & \textbf{SRF08} \\}
+\begin{longtable}{lcc}
+	\label{tab:Vergleich_SRF05_SRF05}
+	\longtableheader
+	\endfirsthead
+	\longtableheader
+	\endhead
+	\caption{Vergleich der zwei Ultraschall-Sensoren SRF05 und SRF08}
+	\endlastfoot
+	\multicolumn{3}{r}{\longtableendfoot} \\
+	\endfoot
+
+	Betriebsspannung	& \multicolumn{2}{c}{\unit{5}{\volt}} \\
+	Frequenz			& \multicolumn{2}{c}{\unit{40}{\kilo\hertz}} \\
+	Reichweite			& \unit{1}{\centi\metre} bis \unit{4}{\metre}
+		& \unit{3}{\centi\metre} bis \unit{6}{\metre} \\
+	Erfassbare Objekte	& 1					& 16 \\
+	Schnittstelle		& Echo-Signal		& \acs{I2C} \\
+	Abmessungen			& \multicolumn{2}{c}{\unit{43 x 20 x 17}
+		{\milli\metre}} \\
+	Besonderheiten		& \textdiscount		& Lichtsensor \\
+\end{longtable}
+
+Da diese Sensoren komplexer in der Ansteuerung sind,
+benötigte ich noch ein Mikrocontroller Entwicklerboard.
+Ich entschied mich für die Open-Source-Prototypen Plattform
+Arduino Uno\footnote{\url{\urlArduinoUno}}.
+Das Arduino Uno ist mit einem ATmega328\footnote{siehe Datenblatt des Bauteils:
+\url{http://www.atmel.com/dyn/resources/prod_documents/doc8161.pdf}}
+ausgestattet.
+
+Ich begann damit, indem ich drei Kabel an den SRF05
+und vier Kabel an den SRF08, um diese anzusteuern, anlötete.
+
+Dann kam ich zur Programmierung.
+Die Programmiersprache, die ich verwendete,
+ist eine C ähnliche Hochsprache
+(\href{http://wiring.org.co/}{Wiring}).
+Aufgrund der Datenblätter und einer Bibliothek,
+zur Interaktion mit \ac{I2C}, war die Ansteuerung
+der zwei Sensoren relativ einfach zu realisieren.
+Ich schloss die Ultraschallsensoren an
+die, in der Software definierten Ports, an.
+Die Module wurden außerdem mit \unit{5}{\volt} versorgt.
+Die gemessenen Werte wurden über eine Serielle Verbindung
+an einen Computer übertragen.
+
+Es folgte ein erster Test der Sensoren.
+Beide Entfernungsmesser sind, unter optimalen Bedingungen,
+auf den Zentimeter genau.
+Außerdem detektieren diese Sensoren ein Hindernis auch
+wenn es schräger als 20\textdegree\ zu einer Wand steht.
+Auch ein kleines Objekt (\unit{5 x 5}{\centi\metre}) wird zuverlässig
+aus einer Entfernung von \unit{2}{\metre} erkannt.
+
+\subsubsection{Test der Sensoren unter Realbedingungen}
+Nach diesen sehr guten Ergebnissen musste als Nächstes geklärt werden,
+ob die SRF-Ultraschallreihe auch im Flug,
+unter Luftdruckänderungen durch die Propeller,
+zuverlässig funktioniert.
+Um dies zu Testen beschaffte ich noch ein \ac{LCD} Display,
+um die Messdaten auch ohne Computer im Flug,
+ablesen zu können.
+Dieses Display lässt sich auch über einen \ac{I2C}
+Bus ansteuern.
+Um das Display zusammen mit dem SRF08 an den \ac{I2C} anzuschließen
+zu können, musste an den Takt- und Datenport jeweils ein Widerstand
+von \unit{2,2}{\kilo\ohm} gegen $+$\unit{5}{\volt} angebracht werden.%
+\footnote{Die Pull-Up Widerstände sind eigentlich bei jedem \ac{I2C}-Bus erforderlich,
+dies viel mir aber erst auf, als ich das Display anschloss~\dots}
+Diese kleine Schaltung lötete ich auf eine Lochrasterplatine.
+
+Nun musste noch die Software um die Ansteuerung des \ac{LCD} Display
+erweitert werden.
+Das Display hat 4 Zeilen mit je 20 Zeichen.
+Es erwartet als Ansteuerung eine Bitfolge für ein Zeichen.
+So können beliebige Zeichen, die nur durch die Pixelmatrix pro Zeichen begrenzt werden,
+angezeigt werden.
+Da man aber nicht für jeden Buchstaben die konkrete Darstellung
+in Bitfolgen angeben will, existieren sogenannte Codetabellen,
+die für jedes Zeichen die entsprechende Bitfolge enthalten.
+Diese Codetabelle ist ebenfalls in einer Bibliothek verfügbar.
+Somit konnten die Messergebnisse auf dem Display angezeigt werden.
+In der Abb. \vref{fig:Ultraschall_Testschaltung}
+ist der Testaufbau zu sehen und in Abb. \vref{fig:Ultraschall_Testschaltung_Display}
+ist das \acs{LCD} Display dargestellt, inklusive der Anzeige während des ersten Versuchs.
+
+\begin{figure}\centering
+%	\includegraphics[width=14cm]{files/images/Ultraschall-Sensoren/Testschaltung//tex/IMG_7317-nocut\imageresize}
+	\includegraphics[width=14cm]{files/images/Ultraschall-Sensoren/Testschaltung//tex/IMG_7317\imageresize}
+	\captionof{figure}{Ultraschall Testschaltung mit Arduino Uno und \acs{LCD} Display}
+	\label{fig:Ultraschall_Testschaltung}
+\end{figure}
+
+\begin{figure}\centering
+ \LCD{4}{20}|Angaben in cm; 10 Hz|
+			|Objekt des SRF05:133|
+			|3 Objekte des SRF08 |
+			|1:46   2:114  3:243 |
+	\captionof{figure}{Das \acs{LCD} Display der Ultraschall Testschaltung}
+	\label{fig:Ultraschall_Testschaltung_Display}
+\end{figure}
+
+Diese Schaltung befestigte ich provisorisch am Mikrokopter.
+Sodass die Sensoren nach unten auf den Boden zeigten.
+Dieser Aufbau ist in Abb. \vref{fig:Ultraschall_Testschaltung_Mikrokopter}
+zu sehen.
+
+\begin{figure}\centering
+%	\hspace{-2cm}		%% Ändern bei Anpassung der Bildgröße
+	\includegraphics[width=14cm]{files/images/Mikrokopter-Ultraschall-Test/IMG_7328-rm-bg\imageresize}
+	\captionof{figure}{Mikrokopter Testschaltung mit Arduino Uno, Ultraschall und \acs{LCD} Display}
+	\label{fig:Ultraschall_Testschaltung_Mikrokopter}
+\end{figure}
+
+Die Entfernungsangaben der Sensoren im Flug schwankten durch die Luftverwirbelungen
+in \unit{1}{\metre}
+etwa um \unit{\pm 10}{\centi\metre}.
+In Bodennähe wurden die Werte exakter.
+
+Nun baute ich, auf einer Lochrasterplatine,
+eine optimierte, selbst erdachte Schaltung auf,
+die den Mikrocontroller, Sensoren und das \ac{LCD} Display direkt verbindet.
+Dies ersetzt das Arduino Uno Board.
+Die Schaltung ist in Abb. \vref{fig:Ultraschall_Testschaltung_Lochraster} abgebildet.
+Zusätzlich lötete ich noch, zu demonstrationszwecken,
+10 \acs{LED}s auf die Lochrasterplatine
+die die Entfernung des SRF08 in Zehnerschritten (\si{\centi\metre})
+anzeigen.
+Zusätzlich Programmierte ich noch ein paar Effekte
+für die \acs{LED}s die beim Start ausgeführt werden.
+So wird zum Beispiel ein Lauflicht dargestellt.
+Dieses wird erst immer schneller, bis runter zu \unit{10}{\milli\second}
+die zwischen einem Wechsel gewartet werden
+und wird dann wieder langsamer.
+Programmiertechnisch habe ich zwei For-Schleif benutzt,
+die in \unit{10}{\milli\second} Schritten runter
+beziehungsweise hochzählen.
+In jedem Schleifendurchlauf wird eine Funktion aufgerufen,
+die nacheinander die LEDs von 1 bis 10 anschaltet und die vorherige ausschaltet.
+Zwischen einem umschalten auf eine benachbarte LED wird die Zeit die von der
+For-Schleif an die Funktion übergebenen wurde, gewartet.
+
+Im folgendem ist der Quellcode der zwei For-Schleif abgedruckt.
+
+\lstset{language=C}
+\begin{lstlisting}
+byte i;
+for(i=100; i > 0; i = i - 10){
+  KnightRider(i);
+}
+for(i=10; i <= 90; i = i + 10){
+  KnightRider(i);
+}
+\end{lstlisting}
+
+Die Funktion \enquote{KnightRider} ist etwas länger, da ich mir keine schöne Implementierung
+überlegt habe~\dots
+
+\begin{figure}\centering
+        \includegraphics[width=14cm]{files/images/Ultraschall-Sensoren/Testschaltung//Lochraster/IMG_7364-rm-bg\imageresize}
+        \captionof{figure}{Ultraschall Testschaltung auf einer Lochrasterplatine und \acs{LCD} Display}
+        \label{fig:Ultraschall_Testschaltung_Lochraster}
+\end{figure}
+
+Nach weiteren Tests mit dem SRF05 und dem SRF08, zeigte sich,
+dass dies, für meinen Anwendungsfall, geeignet sind.
+
+\subsection{Herstellen der Verbindung zwischen Mikrokopter und Entfernungssensoren}
+Nun folgte der schwierigste Teil meiner Arbeit.
+Es war an der Zeit eine Möglichkeit zu finden,
+den Mikrokopter dazu zu befähigen,
+auf die Sensordaten autonom zu reagieren.
+
+Es gab mehre Möglichkeiten, um dies zu tun.
+Zuerst suchte ich eine Schnittstelle zum Mikrokopter,
+die es mir erlaubt eigene Steuerbefehle an diesen zu senden
+beziehungsweise die Software des Mikrokopter so
+anzupassen das dieser selbst die Sensoren abfragen kann.
+
+\subsubsection{Anschluss der Ultraschallsensor an die Hauptplatine}
+Hier kam mir die Idee die Ultraschallsensoren direkt an die
+Hauptplatine über den \ac{I2C} Bus,
+an dem auch die Motorregler angeschlossen sind, anzuschließen.
+
+Ich schloss also den SRF08 an die Hauptplatine an
+und modifizierte die Software der Hauptplatine.
+Der Quellcode des Mikrokopters ist mit Einschränkung
+des \ac{GPS}-Teils verfügbar.
+
+Ich entfernte zu Testzwecken alles aus der
+Hauptschleife und fügte Funktionsaufrufe ein,
+die den SRF08 über die \ac{I2C} Schnittstelle
+ansteuern sollten.
+Allerdings reagierte der Sensor nicht auf die Befehle.
+Ich vermute das die Hauptplatine ein modifiziertes
+\ac{I2C} Protokoll verwendet.
+Somit erschien mir diese Möglichkeit als unpassend,
+da später über diese Schnittstelle auch noch die Motorregler
+angesteuert werden mussten.
+Ich rechnete mit Problemen, wenn ich versucht hätte die
+Software der Hauptplatine so zu ändern, dass eine Kommunikation mit
+dem Ultraschallsensor möglich wäre.\footnote{Änderung 2012: Ich denke das Problem lag an einer
+defekten \ac{I2C} Schnittstelle an meiner zweiten FC, die ich zum Testen nutzte.}
+
+Das Anschließen der Sensoren an die \ac{I2C} Schnittstelle der Hauptplatine
+ist noch aus einem weiteren Grund problematisch,
+da bei einem Kommunikationsfehler auf diesem Bus auch die
+Ansteuerung der Motorregler nicht mehr gewährleistet wäre.
+Dies würde unweigerlich zum Absturz führen.
+
+An diesem Punkt entschied ich mich gegen diese Möglichkeit.
+
+\subsubsection{Auswertung über einen externen Mikrocontroller}
+Die nächste Möglichkeit, die ich versuchte, war einen eigenen
+Mikrocontroller mit der Auswertung zu benutzen
+und dann die Steuerbefehle an die Hauptplatine zu übermittelt.
+
+Dies ist allerdings um einiges schwieriger als die erste Möglichkeit.
+Ich hätte ein (modifizierte) UART Protokoll implementieren müssen.
+Dies wird auch zwischen der Hauptplatine zum Computer
+oder zum Navigationsboard gesprochen.
+
+Nach einigen Tests gab ich dies Möglichkeit auch auf.
+
+Da dies aber die einzigen zwei praktikablen
+Möglichkeiten waren.
+Konnte ich mit dem Mikrokopter meine
+Zielsetzung nicht umsetzten.
+

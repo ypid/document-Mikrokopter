@@ -1,0 +1,66 @@
+\subsubsection{Hauptplatine (FlightCtrl)}
+\begin{wrapfigure}{r}{0pt}
+%\begin{figurewrapper}
+	\includegraphics[width=7cm]{files/images/FC/oben-rm-bg\imageresize}
+	\captionof{figure}{Hauptplatine (Flight-Ctrl V2.0 ME) von oben}
+	\label{fig:FlightCtrl:oben}
+%\end{figurewrapper}
+\end{wrapfigure}
+
+Die Hauptplatine, in Fachkreisen auch FlightCtrl genannt,
+ist die zentrale Steuereinheit des Mikrokopters.
+Diese ist zwingend notwendig um die Flugfähigkeit des Mikrokopters zu gewährleisten,
+da mit dieser die komplette Lageregelung durchgeführt wird.
+
+Die Hauptplatine hat die Abmessungen \unit{50 x 50}{\milli\metre}
+und wiegt (bestückt) \unit{23}{\gram}.
+
+Die Lageregelung geschieht mit drei Beschleunigungssensoren,
+die je für eine Raumdimension messen können,
+von wo die (Erd)gravitation wirkt.
+%\fxnote{Ich möchte zum Ausdruck bringen das nicht nur die Erdgravitation,
+%sondern eigentlich nur die stärkste Gravitation die Messergebnisse bestimmt}
+Somit ist für die Berechnung die Position der Erde zum Mikrokopter bekannt.
+Zusätzlich stehen noch drei
+\href{http://de.wikipedia.org/wiki/Drehratensensor}{Drehratensensoren}
+zur Erfassung der Drehgeschwindigkeit um die drei Achsen zur Verfügung.
+Bewegt sich der Mikrokopter, dann wirkt die Gravitation
+und die Eigenbeschleunigung auf die Sensoren
+und somit ist die Position der Erde zum Mikrokopter nicht mehr allein
+über die Beschleunigungssensoren ermittelbar.
+Mit Hilfe dieser zwei Sensortypen und der Software, die vom
+MikroKopter Projekt\footnote{Also hauptsächlich von Holger Buss und Ingo Busker} stammt,
+kann sich der Mikrokopter eigenständig in einer waagerechten Position halten.
+Die Hauptplatine ist hierfür mit den vier Motorreglern
+über eine \ac{I2C} Schnittstelle verbunden.
+
+Es steht auch ein barometrischer Luftdrucksensor zur Verfügung,
+dessen Wert sich beim Einschalten des Mikrokopters auf die relative Höhe Null eingestellt.
+Mit diesem Sensor kann der Mikrokopter seine Höhe selbst erfassen
+und dadurch ist es möglich selbstständig eine vorgegebene Höhe halten.
+
+Die dafür notwendige Berechnung werden mit Hilfe eines AVR Atmel Mikrocontroller durchgeführt.
+Dieser ist auf Abb.~\vref{fig:FlightCtrl:oben} als schwarzes, quadratisches Halbleiterbauelement
+mit vielen (44) Kontakten zu sehen.
+
+Es stehen auch verschiedene Schnittstellen über Steckerleisten zur Verfügung.
+Diese dienen dem Verbinden mit einem Computer
+oder um weitere Module mit der Hauptplatine verbinden zu können.
+
+Es werden auch direkt Schnittstellen für das Ansteuern von Servos bereitgestellt.
+Servos sind im wesentlichen Elektromotoren samt ihrer Steuerelektronik
+und Mechanik.
+Diese können benutzt werden um, für eine Kamera, die Flugbewegungen
+zu kompensieren.
+Dadurch ist es möglich immer den gleichen Bildausschnitt aufzunehmen.
+Was ohne aktive Kompensation nur mit Gewichten möglich wäre.
+Diese Kompensation ist notwendig da sich der
+Mikrokopter in die jeweilige Richtung beugen muss
+um in diese Richtung zu fliegen.
+
+Um als Pilot den Mikrokopter steuern zu können, ist die Hauptplatine mit einem,
+im Modellbau üblichem, Funkempfänger verbunden.
+Dieser empfängt die Steuerbefehle des Piloten über eine Antenne.
+
+Die Befehle werden Ausgewertet und in Form von Drehzahlenwerten an die
+Motorregler weitergegeben.

@@ -1,0 +1,15 @@
+\includepdf[pages={60},pagecommand={\thispagestyle{plain}
+\pdfbookmark[1]{Der ferngesteuerte Krieg}{sdw_2010-12_60}
+%\addsec{Der ferngesteuerte Krieg}
+%\addcontentsline{toc}{section}{Der ferngesteuerte Krieg}
+\pdfbookmark[2]{1 (70)}{sdw_2010-12_60}}]{sdw_2010_12}
+\newcounter{pagesPhy}
+\setcounter{pagesPhy}{71}\stepcounter{plusplus}
+\foreach \x in {61,62,63,64,65,66,67,68,69}{
+  \stepcounter{plusplus}
+  \includepdf[pages={\x},pagecommand={\thispagestyle{plain}
+  \pdfbookmark[2]{\arabic{plusplus} (\arabic{pagesPhy})}{sdw_2010-12_\x}
+  }]{sdw_2010_12}
+  \stepcounter{pagesPhy}
+}
+(Nur temporär eingebunden)

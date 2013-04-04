@@ -1,0 +1,22 @@
+\subsubsection{Motorregler}
+\begin{wrapfigure}{r}{0pt}
+	\includegraphics[width=7cm]{files/images/BL-Ctrl/oben-rm-bg}
+	\captionof{figure}{Motorregler (Brushless Regler V1.2)}
+\end{wrapfigure}
+
+Der Motorregler ist für die Ansteuerung eines Brushless-Motors zuständig.
+Seine Abmessungen betragen \unit{20 x 43}{\milli\metre}.
+
+Er bekommt die jeweiligen Sollwerte von der Hauptplatine
+mit einer Frequenz von \unit{500}{\hertz}
+und setzt sie in Steuerbefehle für die Motoren um.
+Um dies zu erreichen, wird je ein Atmel AVR Mikrocontroller für einen Motor benutzt.
+
+Da für einen Brushless-Motor das Drehfeld\footnote{Ein Drehfeld
+ist ein Magnetfeld, das sich um eine Rotationsachse dreht.}
+drei Pole mit einer hohen elektrischen Leistung\footnote{Der verwendete Motorregler
+ist für eine Dauerbelastung von \SIrange{10}{12}{\ampere}
+und eine kurzzeitige Spitzenbelastung von \unit{20}{\ampere} ausgelegt.}
+geschaltet werden muss, werden für einen Brushless-Motor drei \ac{MOSFET} als Steuertransistor benutzt.
+
+Die Drehzahlwerte werden in Form eines Drehfeldes an die Motoren weitergeben.

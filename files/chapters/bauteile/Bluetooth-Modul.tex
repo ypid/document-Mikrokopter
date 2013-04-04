@@ -1,0 +1,40 @@
+\subsubsection{Bluetooth Funkmodul}
+
+Das Bluetooth Funkmodul ermöglicht eine digitale drahtlose Kommunikation mit einem Computer
+oder mit einem anderen Mikrokopter.
+
+Das eigentliche Bluetooth Funkmodul (F2M03GXA) arbeitet mit \unit{3{,}3}{\volt}.
+Da die Hauptplatine aber mit \unit{5}{\volt} Betriebsspannung arbeitet,
+wird noch eine Adapterplatine (BT-AP10) benötigt.
+Diese erlaubt den Betrieb dieses Bluetooth Funkmoduls.
+Das Bluetooth Funkmodul hat sehr gute Funkübertragungseigenschaften
+und ist sehr Energie effizient.
+Es hat eine Reichweite bis zu \unit{300}{\meter},
+wenn als Gegenstück das gleiche Bluetooth Funkmodul zum Einsatz kommt.
+%was eigentlich in keiner Bluetooth Klasse spezifiziert ist
+%und somit nur mit dem gleichen Bluetooth Modul als Gegenstelle erreicht werden kann.
+Die Bluetooth Verbindung ist hierbei verschlüsselt.
+
+\begin{wrapfigure}{r}{0pt}
+\begin{minipage}{7cm}
+	\centering
+	Adapterplatine~~~~~~~ \\
+	\includegraphics[width=7cm]{files/images/BT-AP10/BT-Modul\imageresize} \\
+	\vspace{-0.2cm}
+	Modul F2M03GXA~~~~
+	\captionof{figure}{Bluetooth Funkmodul}
+	\label{fig:Bluetooth-Funkmodul}
+\end{minipage}
+\end{wrapfigure}
+Zusätzlich können Störungen auf einzelnen Kanälen erkannt
+und diese als unbenutzbar markiert werden.
+
+Auf Abb.~\vref{fig:Bluetooth-Funkmodul} ist in der oberen Hälfte
+die selbst gelötete Adapterplatine mit dem auf der Rückseite angelötetem
+Bluetooth Modul zu sehen.
+Die untere Hälfte zeigt das Bluetooth Modul von der bestückten Seite.
+
+Eine digitale Funkverbindung ist auch notwendig, um dem Mikrokopter im Flug
+Zielkoordinaten zu schicken, sodass dies angeflogen werden können.
+Die Navigation wird von dem Navigationsboard erledigt
+an dem auch das Bluetooth Modul angeschlossen ist.

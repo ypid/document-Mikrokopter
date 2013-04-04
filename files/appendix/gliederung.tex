@@ -1,0 +1,103 @@
+\thispagestyle{empty}
+\progressbarCalcBarSubDivision{3em}{5}
+\newcounter{countprozent}
+\newcommand{\printprozent}[1]{
+  \ifthenelse{#1 < 10}
+    {\progressbar{0.0#1}}
+    {\progressbar{0.#1}} & #1
+    \addtocounter{countprozent}{#1}
+}
+\renewcommand{\longtableheader}{\hline \multicolumn{1}{|c}{\textbf{ID}} & \multicolumn{1}{c}{\textbf{Arbeitstitel}}
+& \multicolumn{2}{c}{\textbf{Status}} & \multicolumn{1}{c|}{\textbf{Bemerkung}} \\
+& & \multicolumn{1}{c}{bildlich} & \multicolumn{1}{c}{\%} & \\ \hline}
+\newcommand{\longtableHeader}{
+\longtableheader
+\endfirsthead
+
+\longtableheader
+\endhead
+
+\hline \multicolumn{5}{|r|}{\longtableendfoot} \\ \hline
+\endfoot
+
+\hline% \hline
+\endlastfoot}
+
+\newcommand{\subsecnameTeilone}{Bau des \TITEL}
+\newcommand{\subsecnameTeiltwo}{Erweiterung um \acs{GPS} und Kompass}
+\newcommand{\subsecnameTeilthree}{Erweiterung um Autonomes Reagieren (Hindernissen ausweichen)}
+%%%%%%%%%%%
+\section*{Gliederung}
+\pdfbookmark[1]{Gliederung}{Gliederung}
+\subsection*{Theoretischer Teil}
+\pdfbookmark[2]{Theoretischer Teil}{TheoretischerTeil}
+
+
+\resetplusplus
+\begin{longtable}{|lllrl|}
+\longtableHeader
+
+\plusplus & Vorwort & \printprozent{0} & \\
+\plusplus & \nameref{sec:einleitung} & \printprozent{95} & \siehe{sec:einleitung} \\
+\plusplus & \nameref{sec:drohnen} ~-- \nameref{subsec:drohnen:begriffskläaerung} & \printprozent{90} &
+\siehe{subsec:drohnen:begriffskläaerung} \\
+\plusplus & \nameref{subsec:drohnen:AbwaegungderArgumente} & \printprozent{95} &
+\siehe{subsec:drohnen:AbwaegungderArgumente} \\
+\plusplus & \nameref{subsec:bau:bauteile} & \printprozent{86} &
+\siehe{subsec:bau:bauteile} \\
+\plusplus & \subsecnameTeilone & \printprozent{90} & \siehe{subsec:bau:Mikrokopter:teil1} \\
+\plusplus & \subsecnameTeiltwo & \printprozent{90} & \siehe{subsec:bau:Mikrokopter:teil2} \\
+\plusplus & \subsecnameTeilthree & \printprozent{15} & \siehe{sec:autonomes_fliegen} \\
+\plusplus & Nachwort & \printprozent{0} & \\
+%% \titleref{sec:drohnen}
+\end{longtable}
+
+\subsection*{Praktischer Teil}
+\pdfbookmark[2]{Praktischer Teil}{PraktischerTeil}
+
+\begin{longtable}{|lllrl|}
+\longtableHeader
+
+\plusplus & \subsecnameTeilone & \printprozent{98} & \\
+\plusplus & \subsecnameTeiltwo & \printprozent{90} & \\
+\plusplus & \subsecnameTeilthree & \printprozent{20} & \\
+\end{longtable}
+
+\newpage
+\thispagestyle{empty}
+
+\subsection*{Fortschritt insgesamt}
+\pdfbookmark[2]{Fortschritt insgesamt}{Fortschrittinsgesamt}
+\progressbarCalcBarSubDivision{26em}{10}
+
+\FPeval\myprogressdruchschnittkomma{\thecountprozent/\theplusplus}
+\FPeval\myprogressdruchschnittkomma{\myprogressdruchschnittkomma/100}
+\FPround\myprogressdruchschnittkomma\myprogressdruchschnittkomma3
+\FPeval\myprogressdruchschnitt{\myprogressdruchschnittkomma*1000}
+\FPtrunc\myprogressdruchschnitt\myprogressdruchschnitt0
+\Calcprogresspromille
+
+\begin{longtable}{|lll|}
+\hline \multicolumn{1}{|c}{\textbf{Bezeichnung}} & \multicolumn{1}{c}{\textbf{Fortschrittsbalken}} &
+\multicolumn{1}{c|}{\textbf{\textperthousand}} \\ \hline
+\endfirsthead
+
+\hline \multicolumn{1}{|c}{\textbf{Bezeichnung}} & \multicolumn{1}{c}{\textbf{Fortschrittsbalken}} &
+\multicolumn{1}{c|}{\textbf{\textperthousand}} \\ \hline
+\endhead
+
+\hline \multicolumn{3}{|r|}{\longtableendfoot} \\ \hline
+\endfoot
+
+\hline% \hline
+\endlastfoot
+
+Durchschnitt\footnote{Der Durchschnitt aus den oben angegebenen \arabic{plusplus} Prozentwerten, es ist keine Wertung des
+Umfangs mit in die Berechnung eingeflossen, was diese eventuell verfälscht\dots} &
+\progressbar{\myprogressdruchschnittkomma} &
+\myprogressdruchschnitt \\
+Eigenes Ermessen & \progressbar{.\FortschritteigenesErmessen} & \FortschritteigenesErmessen \\
+Zeitfortschritt\footnote{Der Zeitfortschritt wurde über die schon abgelaufene Zeit berechnet} &
+\progressbar{\myprogresskomma} &
+\myprogress \\
+\end{longtable}

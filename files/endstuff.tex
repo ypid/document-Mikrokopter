@@ -1,0 +1,69 @@
+%\newpage~
+\vfill
+\printURLlong
+
+%Alle verwendeten Grafiken stammen,
+%solang nicht anders angegeben, von mir.
+%Die Bilder wurden mit dem Programm \urlGIMP Nachbearbeiten.
+
+\printlicense
+\printendsignature
+\newpage
+%\ifDraft{
+%
+\fxnote{Nachfolgender Text wird nicht gedruckt}
+%\input{files/git/diffs}
+
+%\begin{landscape}
+%\input{files/appendix/gliederung}
+%\end{landscape}
+
+\newpage
+\Statistiken
+Status:~\progressbar{.\FortschritteigenesErmessen} (eigenes Ermessen)
+\newpage
+    \begin{sourcefiletable}{1}
+      \Isourcefile{Hauptdatei}{\jobname.tex}
+	  \Isourcefile{Präambel}{files/header/praeambel.tex}
+	  \Isourcefile{Zusatzpakete}{files/header/pakete.tex}
+      \Isourcefile{Inhalt}{files/content.tex}
+      \Isourcefile{Titelseite}{files/titlepage/titlepage.tex}
+      \Isourcefile{Abkürzungs-Datenbank}{files/header/acronym.tex}
+      \Isourcefile{Vorwort}{files/chapters/Vorwort.tex}
+      \Isourcefile{Einleitung}{files/chapters/Einleitung.tex}
+      \Isourcefile{Drohnen}{files/chapters/Drohnen.tex}
+      \Isourcefile{Der Bau des Mikrokopter}{files/chapters/bau.tex}
+      \Isourcefile{Bauteile (nur input Befehle)}{files/chapters/bauteile.tex}
+      \Isourcefile{Rahmen}{files/chapters/bauteile/Rahmen.tex}
+      \Isourcefile{FlightCtrl}{files/chapters/bauteile/FC.tex}
+      \Isourcefile{BL-Ctrl}{files/chapters/bauteile/BL-Ctrl.tex}
+      \Isourcefile{Brushless-Motor}{files/chapters/bauteile/Brushless-Motor.tex}
+      \Isourcefile{Propeller}{files/chapters/bauteile/Propeller.tex}
+      \Isourcefile{Verteilerplatine}{files/chapters/bauteile/Verteilerplatine.tex}
+      \Isourcefile{Akku}{files/chapters/bauteile/Akku.tex}
+      \Isourcefile{Modellbau Funkempfänger}{files/chapters/bauteile/Funkempfaenger.tex}
+      \Isourcefile{Bluetooth-Modul}{files/chapters/bauteile/Bluetooth-Modul.tex}
+      \Isourcefile{NaviCtrl}{files/chapters/bauteile/NC.tex}
+      \Isourcefile{MK3Mag}{files/chapters/bauteile/MK3Mag.tex}
+      \Isourcefile{MKGPS}{files/chapters/bauteile/MKGPS.tex}
+      \Isourcefile{\nameref{sec:autonomes_fliegen}}{files/chapters/Autonomie}
+      \Isourcefile{Schluss}{files/chapters/Nachwort.tex}
+      \Isourcefile{Hardware- und Preisliste}{files/appendix/hardwareliste}
+      \Isourcefile{Gliederung}{files/appendix/gliederung}
+      \Isourcefile{Literaturverweise (Datenbank)}{files/header/bibliographie.bib}
+      \Isourcefile{Onlineverweise (Datenbank)}{files/header/online.bib}
+	  \Isourcefile{Endteil}{files/endstuff.tex}
+    \end{sourcefiletable}
+  \begin{landscape}
+    \pagestyle{plain}
+    \pdfbookmark[2]{Versionshinweise}{versionshinweise}
+    \subsection*{Versionshinweise}
+      \input{files/git/versions-log.tex}
+      \printgitstatlandscape{1}
+  \end{landscape}
+  \printgitstat{1}
+  \subsubsection*{Dateien?}
+  \pdfbookmark[3]{Dateien?}{files_by_date}
+  \includegraphics[width=14cm]{files/git/stats/files_by_date-crop}
+  \listoffixmes
+%}{}

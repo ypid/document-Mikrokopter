@@ -1,0 +1,26 @@
+%%%Header
+%\listfiles	%% listfiles in die Logdatei
+\RequirePackage{RequirePackageRS}
+\documentclass[12pt,a4paper,ngerman,numbers=noenddot,toc=listof,fleqn]{scrartcl} %%% ,draft
+\input{files/header/praeambel}
+\usepackage[
+	style=authortitle-comp,
+	natbib=true,
+	backend=biber,
+%	url=false				%% default: true
+]{biblatex}
+\DeclareFieldFormat{urldate}{\mkbibparens{abgerufen am\space#1}}
+\bibliography{files/header/bibliographie, files/header/online}
+%\renewcommand{\imageresize}{}
+%\includeonly{
+%	files/chapters/Einleitung,
+%	files/chapters/Drohnen,
+%	files/chapters/bau,
+%	files/chapters/Autonomie,
+%}
+%%%Body
+\begin{document}
+\input{files/content}
+
+\input{files/endstuff}
+\end{document}

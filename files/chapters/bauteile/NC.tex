@@ -1,0 +1,32 @@
+\subsubsection{Navigationsboard}
+\begin{wrapfigure}{r}{0pt}
+	\includegraphics[width=7cm]{files/images/Navi-Ctrl/oben-1-rm-bg\imageresize}
+	\captionof{figure}{Navigationsboard (Navi-Ctrl)}
+\end{wrapfigure}
+
+Das Navigationsboard (Navi-Ctrl) ist die Navigationsrecheneinheit.
+Diese wird benötigt, um die \ac{GPS}- und Kompassdaten zu verrechnen.
+Diese Daten werden benötigt um zum Beispiel
+Zielkoordinaten anzufliegen.
+
+Die Abmessungen betragen \unit{50 x 50}{\milli\metre}.
+Hauptbestandteil des Navigationsboard ist ein ARM9 Mikrocontroller,
+ein micro \ac{SD} Kartenleser und mehrere Schnittstellen.
+
+Ist eine Speicherkarte im Kartenleser, dann kann die Firmware des
+Navigationsboard in einem gewissen Intervall (Standard: eine Sekunde)
+Statusinformationen auf die Karte sichern.
+Diese Statusinformationen umfassen beispielsweise die \ac{GPS}-Koordinaten,
+die aus dem \ac{GPS}-Signal berechnete
+\href{http://de.wikipedia.org/wiki/GPS-Zeit}{Uhrzeit},
+die Lage des magnetischen Nordpols und die Akkuspannung.
+
+Außerdem existieren noch mehrere Schnittstellen die zum Verbinden
+des Navigationsboard zu der Hauptplatine, dem Magnetfeldsensor
+und dem \acs{GPS}-Empfänger dienen.
+
+Das Navigationsboard hat keinerlei Sensoren,
+sondern ist lediglich eine notwendige Adapter- und Recheneinheit
+um \acs{GPS}- und Kompassdaten auszuwerten.
+Die Sensoren werden als Module angeschlossen.
+Der Magnetfeldsensor ist direkt auf dem Navigationsboard befestigt.

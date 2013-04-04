@@ -1,0 +1,175 @@
+\section{Der Bau des Mikrokopter}
+\label{sec:bau:Mikrokopter}
+
+\subsection{Einleitung}
+\label{subsec:bau:Mikrokopter:Einleitung}
+
+Der Bau verlief in mehreren Phasen.
+Zuerst, da ich anfangs fliegen üben wollte
+und um später die Funktionalität des Mikrokopters nach und nach zu erweitern.
+Um bei möglichen Abstürzen nicht sinnlos viel Hardware ersetzen zu müssen.
+Im folgenden ist eine Erklärung der einzelnen Hardware Komponenten zu finden.
+Eine \nameref{anhang:HardwareUndPreisliste} ist im Anhang \vpageref{anhang:HardwareUndPreisliste}.
+
+Anschließend beschreibe ich im ersten Teil den Aufbau des Mikrokopters
+und im folgenden Teil die Erweiterung um zusätzliche Sensoren
+zur Erkennung der Lage im Raum.
+Das Hauptthema meiner Projektarbeit folgt im nächsten Kapitel
+(\nameref{sec:autonomes_fliegen})
+ab Seite \pageref{sec:autonomes_fliegen}.
+%die Fähigkeit des Autonomen reagieren auf die Umwelt.
+
+Ich baue bei dieser Projektarbeit auf ein vorhandenes Selbstbauprojekt auf,
+dem \enquote{Mikrokopter}.
+
+\input{files/chapters/bauteile}
+
+\subsection{Teil 1: Grundsätzlicher Aufbau}
+\label{subsec:bau:Mikrokopter:teil1}
+
+Zuerst montierte ich den Rahmen, der aus vier Auslegern aus Aluminium
+und zwei quadratischen Zentralplatten aus \ac{GFK} bestand,
+mit Schrauben und befestigte das Landegestell.
+An dem Landegestell befestigte ich mit acht halbierten Listerklemmen
+zwei \unit{31}{\centi\metre} lange und \unit{3}{\milli\metre} starke Eisenstangen.
+Um zu vermeiden, dass sich die Schrauben
+von selbst lösen verwendete ich bei allen Schrauben einen Sicherheitslack mittlerer Härte.
+Am Rahmen, zwischen dem Landegestell, brachte ich Klettverschlüsse als Halterung für den Akku an.
+
+Jetzt folgt die Elektronik.
+Dazu gehört die Hauptplatine,
+die bereits mit allen \acs{SMD} Teile bestückt war.
+\acsu{SMD} bedeutet surface-mounted device: oberflächenmontiertes Bauelement.
+Die Größe der \ac{SMD}s liegt in der Regel
+im Millimeterbereich und sie sind daher relativ schwer, für eine Person, zu löten.
+
+%% Bild SMD-Transistor
+%\begin{wrapfigure}{r}{0pt}
+\begin{figurewrapper}
+%\begin{figure}\centering
+	\includegraphics[width=7cm]{files/images/SMD-Transistor/2-rm-bg-cut}\hspace{5cm}
+	% \imageresize ist zu schlecht
+	\captionof{figure}{Ein SMD-Transistor}
+	\label{fig:SMD-transistor}
+%\end{figure}
+\end{figurewrapper}
+%\end{wrapfigure}
+
+Es waren allerdings auch noch einige größere Bauteile zu bestücken.
+Zum Beispiel ein Luftdrucksensor, Steckerleisten, Kondensatoren und diverse Kabel.
+
+Dann musste bei jedem der vier Motorregler ein Kondensator
+zum Glätten von Spannungsspitzen eingelötet
+und anschließend eine Lötbrücke zur Adressierung der vier Motorregler gesetzt werden.
+Um alle Motoren unabhängig voneinander über die gleiche \ac{I2C} Schnittstelle anzusteuern zu können.
+
+Die vier Motorregler lötete ich dann an eine Verteilerplatine,
+die unter anderem den Strom und die Steuerbefehle von der
+Hauptplatine an die Motoren verteilt.
+
+Leiterbahnen auf Platinen sind auf Grund ihres geringen Querschnittes
+nicht geeignet für den Transport hoher\footnote{circa \unit{60}{\ampere} beim Einschalten}
+Stromstärken.
+Deshalb lötete ich zusätzlichen Kupferdraht auf die stark belasteten Stellen.
+Das sind die Leiterbahnen die vom Akku zu den Motorreglern führen.
+Die Länge der so verstärkten Leiterbahnen betrug circa \unit{18}{\centi\meter}.
+Auf die Verteilerplatine lötete ich noch einen elektronischen Leistungsschalter,
+zum Unterbrechen der kompletten Stromversorgung des Mikrokopters ein.
+
+Ich lötete noch jeweils zwei \acs{SMD}-Widerstände
+und \acs{SMD}-Transistoren auf die Verteilerplatine,
+damit zwei Verbraucher über die Steuerausgänge der Hauptplatine geschaltet werden können.
+Als Verbraucher lötete ich zwei \ac{LED}-Streifen ein.
+Sie sollen den vorderen und hinteren Ausleger markieren.
+
+Um die Lötstellen mechanisch zu entlasten,
+verklebte ich die entscheidenden Stellen zwischen den Motorreglern
+und der Verteilerplatine mit Heißkleber.
+
+Später befestigte ich die Verteilerplatine am Rahmen.
+An diese Verteilerplatine lötete ich dann noch einen Stecker zum Anschluss des Akkus an
+und an die Motorregler jeweils drei Kabel, die mit Steckverbindungen zu je einem Motor führen.
+Ich lötete noch die entsprechenden Steckergegenstücke an die Kabel der Motoren,
+schraubte einen Mitnehmer für die Propeller an die Motoren und
+die Motoren an den Rahmen.
+Die Stecker wurden jeweils mit Schrumpfschläuchen gegen Kurzschlüsse isoliert.
+Als nächstes befestigte ich die Hauptplatine mit schwingungsdämpfenden Abstandshaltern auf der
+zweiten Ebene auf der Verteilerplatine und verkabelte diese miteinander.
+
+Dann begann ich einige \acs{SMD}-Bauteile auf eine Adapterplatine zu löten,
+die die Verbindung zwischen einem Bluetooth Funkmodul und der Hauptplatine ermöglicht.
+Um Kurzschlüsse zu vermeiden, bekam dieses Bluetooth Modul eine Schrumpfschlauchhülle.
+Das Modul habe ich dann mit der Hauptplatine verbunden und im Rahmen untergebracht.
+
+Dann brachte ich am äußeren Ende des hinteren Auslegers einen Summer an,
+den ich ebenfalls an die Hauptplatine anschloss.
+Dieser Summer dient dazu, dem Piloten während des Fluges,
+akustisch Fehler mitzuteilen oder Befehle zu bestätigen.
+Ein Befehl der akustisch bestätigen wird ist
+beispielsweise das Kalibrieren des Magnetfeldsensors
+oder das erreichen eines \ac{GPS}-Wegpunktes.
+
+Es folgte noch ein Modellbau Empfänger,
+den ich am Rahmen befestigte, an die Hauptplatine anschloss und
+die Antenne mit einem kleinen Röhrchen in die Vertikale brachte.
+
+Als Abschluss für diesen zweistöckigen Turm (Verteilerplatine und Hauptplatine),
+befestigte ich noch eine quadratische Plexiglasplatte.
+Zum Schluss fixierte ich noch alle Kabel mit Kabelbindern
+und montierte noch die vier Propeller auf die Motoren.
+Es gibt jeweils zwei rechtsläufige und zwei linksläufige Propeller.
+Das Funktionsprinzip eines Quadrokopters ist bereits im Kapitel
+\printfullref{subsubsec:drohnen:AbwaegungderArgumente:Zivilen} geklärt.
+
+Damit war die erste Bauphase in circa 18 Stunden beendet.
+Es folgte noch die Konfiguration der Software
+und Kalibrieren der Sensoren.
+
+Das Ergebnis ist in Abb.~\vref{fig:MikroKopter-nach-Bauphase1} zu sehen.
+Allerdings ohne die vier Ausleger und Rotoren.
+
+\begin{figure}\centering
+	\includegraphics[width=14cm]{files/images/Mikrokopter/IMG_6832-rm-bg\imageresize}
+	\captionof{figure}{Mikrokopter: Blick auf die Hauptplatine, Motorregler und Rahmen}
+	\label{fig:MikroKopter-nach-Bauphase1}
+\end{figure}
+
+\subsection{Teil 2: Erweiterung um \acs{GPS} und Kompass}
+\label{subsec:bau:Mikrokopter:teil2}
+
+In der zweiten Bauphase beschreibe ich die Erweiterung um \ac{GPS}
+und einen Magnetfeldsensor.
+Dies Erweiterung ist dazu gedacht,
+dem Mikrokopter eine Orientierung und Navigation im Raum zu ermöglichen.
+
+Auf den Platinen waren bereits die \acs{SMD}-Bauteile vorbestückt.
+Ich lötete nur noch einen Kondensator
+und Steckleisten auf das Navigationsboard, das die Verbindung zwischen Hauptplatine
+und Navigationserweiterungen herstellt.
+Dann lötete ich eine Steckleiste auf den Magnetfeldsensor
+und montierte diesen auf das Navigationsboard.
+Anschließend schraubte ich dies auf die
+Hauptplatine und verkabelte sie miteinander.
+Nun kam noch der \ac{GPS}-Empfänger
+mit einer passiven \ac{GPS} Antenne
+und einer Lötbrücke, zur Auswahl der Empfangsart.
+Hier war es besonders wichtig eine elektrostatische Entladung zu vermeiden,
+da der \ac{GPS}-Empfänger sehr empfindlich ist
+und dadurch leicht zerstört werden kann.
+Elektrostatische Entladung ist ein Ausgleich zweier unterschiedlich starker Ladungen.
+Ursache dieser Ladungsdifferenz ist meistens Aufladung durch Reibungselektrizität.
+Kommt es zu einem Ladungsausgleich über einen Halbleiter, kann es,
+bei entsprechend hohem Strom, zur Zerstörung von Halbleitern kommen.
+
+\begin{figure}\centering
+	\includegraphics[width=16cm]{files/images/Navi/1-rm-bg\imageresize}
+	\captionof{figure}{Navigationsboard (NaviCtrl), Magnetfeldsensor (MK3Mag) und SMD-Empfänger (MKGPS)}
+	\label{fig:Navigationseinheit}
+\end{figure}
+
+Danach montierte ich den \ac{GPS}-Empfänger auf das Navigationsboard.
+Abschließend kam eine Plexiglasplatte zum Schutz über den \ac{GPS}-Empfänger.
+Diese Bauphase dauerte circa 4 Stunden.
+
+Somit stand mir eine flugfähige Plattform
+für meine Weiteres vorgehen zur Verfügung.

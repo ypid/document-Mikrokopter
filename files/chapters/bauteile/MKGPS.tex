@@ -1,0 +1,35 @@
+\subsubsection{\acs{GPS}-Empfänger}
+
+Der \ac{GPS}-Empfänger (MKGPS) ist für den Empfänger und die Auswertung des \ac{GPS}-Signals zuständig.
+Die Informationen, die sich aus diesem ergeben, werden, dann an das Navigationsboard weitergegeben.
+\newpage
+
+\begin{wrapfigure}{r}{0pt}
+	\includegraphics[width=6cm]{files/images/MKGPS/unten-rm-bg\imageresize}
+	\captionof{figure}{\acs{GPS}-Empfänger (MKGPS)}
+\end{wrapfigure}
+Die Platine arbeitet im Normalfall mit einer passiven Antenne.
+Passive Antenne bedeutet, dass diese nicht über einen eingebauten Signalverstärker verfügt.
+Zur Erhöhung der Genauigkeit kann auch eine aktive Antenne benutzt werden,
+die aber auch teurer sind.
+Die \ac{GPS}-Auflösung die rechnerisch erfasst werden kann,
+beträgt \unit{1}{\centi\metre}.
+Dieser Wert wird allerdings nicht erreicht,
+da die Genauigkeit des, für das US-Militär entwickelten \ac{GPS},
+für Zivilisten nicht so hoch ist.
+Der Grund dafür ist, dass die Korrekturinformationen von Referenzstationen nicht frei Verfügbar
+sind.
+
+Um schneller die Position des Mikrokopters ermitteln zu können,
+ist außerdem noch eine wiederaufladbare Knopfzelle auf der Platine aufgelötet.
+Diese ermöglicht es den Almanach\footnote{Daten zu den Umlaufbahnen aller \ac{GPS}-Satelliten.}
+und die aktuelle Zeit zu halten.
+Dies wird getan weil die Datenrate über \ac{GPS} sehr langsam ist (\unit{50}{Bit\per\second})
+und deswegen die Übertragung des kompletten Almanachs 12,5 Minuten dauern würde.
+%\wrapfill
+
+\acused{USB}
+Außerdem befindet sich auf der Platine eine Lötstelle für einen \ac{USB}-Anschluss. Der
+\ac{USB}-Anschluss ist direkt mit der \ac{USB}-Schnittstelle vom Empfänger-Modul\footnote{LEA-4H
+von \href{http://www.u-blox.com/}{u-blox}.} verbunden.
+Dadurch kann man den \ac{GPS}-Empfänger auch vom Computer aus leicht abfragen.
